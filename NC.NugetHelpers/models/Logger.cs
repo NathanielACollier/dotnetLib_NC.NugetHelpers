@@ -13,5 +13,15 @@ namespace NC.NugetHelpers.models
         public void LogWarning(string data) => System.Diagnostics.Debug.WriteLine( $"WARNING: {data}");
         public void LogError(string data) => System.Diagnostics.Debug.WriteLine( $"ERROR: {data}");
         public void LogSummary(string data) => System.Diagnostics.Debug.WriteLine( $"SUMMARY: {data}");
+
+        public void LogInformationSummary(string data) => System.Diagnostics.Debug.WriteLine($"INFORMATION_SUMMARY: {data}");
+
+        public void Log(LogLevel level, string data) => System.Diagnostics.Debug.WriteLine($"{level.ToString().ToUpper()}: {data}");
+
+        public Task LogAsync(LogLevel level, string data) => Task.Run(() => Log(level,data));
+
+        public void Log(ILogMessage message) => System.Diagnostics.Debug.WriteLine($"{message.Level.ToString().ToUpper()}: {message.Message}");
+
+        public Task LogAsync(ILogMessage message) => Task.Run(() => Log(message));
     }
 }
