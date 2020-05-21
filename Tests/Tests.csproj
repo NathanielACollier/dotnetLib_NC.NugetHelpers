@@ -14,4 +14,7 @@
         <PackageReference Include="NuGet.Configuration" Version="5.6.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\NC.NugetHelpers\NC.NugetHelpers.csproj" />
+    </ItemGroup>
 </Project>

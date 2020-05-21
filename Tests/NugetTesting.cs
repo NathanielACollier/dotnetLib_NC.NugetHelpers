@@ -1,5 +1,6 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace dotnetTestsGeneral
 {
@@ -9,11 +10,9 @@ namespace dotnetTestsGeneral
         [TestMethod]
         public void GetAllNugetRepositories()
         {
-            var userProfilePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var settings = new NuGet.Configuration.Settings(root: userProfilePath);
-            var sourceProvider = new NuGet.Configuration.PackageSourceProvider(settings);
+            var sources = NC.NugetHelpers.Utility.GetPackageSources();
 
-            var repositories = sourceProvider.LoadPackageSources();
+            Assert.IsTrue(sources.Count() > 0);
         }
     }
 }
